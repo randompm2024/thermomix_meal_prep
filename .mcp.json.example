@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "cookidoo": {
+      "command": "{{REPO_ABSOLUTE_PATH}}/cookidoo-mcp/.venv/bin/python",
+      "args": [
+        "{{REPO_ABSOLUTE_PATH}}/cookidoo-mcp/server.py"
+      ]
+    }
+  }
+}

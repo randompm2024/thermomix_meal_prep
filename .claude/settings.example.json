@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__cookidoo__whoami",
+      "mcp__cookidoo__get_recipe_details",
+      "mcp__cookidoo__list_my_collections",
+      "mcp__cookidoo__get_my_calendar_week",
+      "mcp__cookidoo__get_my_shopping_list",
+      "mcp__cookidoo__featured_recipes",
+      "mcp__cookidoo__browse_managed_collection",
+      "Read",
+      "Write(personas/**)",
+      "Write(outputs/**)",
+      "Bash(python3 --version)",
+      "Bash(ls -la ~/.config/cookidoo-mcp/.env)"
+    ]
+  }
+}
