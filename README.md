@@ -2,11 +2,19 @@
 
 A weekly Thermomix dinner planner powered by Claude Code, your Cookidoo collections, and a household persona file you customize once.
 
-Run `/meal-plan` and you get four dinners for the week — one optional showcase plus three weeknight cooks capped at 30-40 minutes active time, each with a faster fallback. Source-balanced across your custom collections, Vorwerk-curated popular recipes, and the public Cookidoo explore page. Auto-grouped shopping list. Reads the previous two weeks from your Cookidoo calendar so it doesn't propose the same thing twice. Learns from your weekly feedback over time.
+Run `/meal-plan` and you get four dinners for the week: one optional showcase plus three weeknight cooks capped at 30-40 minutes active time, each with a faster fallback. Drop in photos of your fridge or pantry and it'll read them, list what it sees, and build the plan around what you already own. Source-balanced across your custom collections, Vorwerk-curated popular recipes, and the public Cookidoo explore page. Auto-grouped shopping list. Reads the previous two weeks from your Cookidoo calendar so it doesn't propose the same thing twice. Learns from your weekly feedback over time.
 
 ## Demo
 
 See [examples/weekly-meal-plan.example.md](examples/weekly-meal-plan.example.md) for what the planner produces. The fictional Garcia family is vegetarian with a peanut allergy and two picky kids.
+
+## Show it your fridge
+
+Got leftover ingredients staring you down and no idea what to make? Take a few photos: fridge shelves, freezer drawer, dry pantry, spice rack, whatever's relevant. Drop the images into Claude Code in the same message as your `/meal-plan` invocation. The skill will read each one, list what it sees grouped by category (proteins, produce, dairy, pantry, frozen, leftovers), call out anything blocked by glare or unclear packaging, and ask you to confirm or correct the list before planning around it.
+
+From there it asks a couple of week-shape questions (busy nights, anchor/avoid, cuisine direction) and pitches four dinners built around what you actually have. The shopping list at the end marks photo-confirmed items as already-on-hand instead of asking you to buy them again. Works with a single photo or several.
+
+Voice-to-text works too: speak your message in Claude Code, attach the photos, and the skill takes it from there.
 
 ## Prerequisites
 
@@ -69,6 +77,7 @@ You'll get a plan for the week.
 .claude/
   skills/meal-plan/SKILL.md             # the planner skill
   commands/meal-plan-setup.md           # one-time setup wizard (run this first)
+  commands/meal-plan.md                 # /meal-plan slash command entry point
   settings.example.json                 # recommended permission allowlist
 cookidoo-mcp/                           # local read-only MCP server (Python)
   server.py

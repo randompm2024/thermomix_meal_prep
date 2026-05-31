@@ -17,7 +17,7 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
-from aiohttp import ClientSession
+from aiohttp import ClientSession, CookieJar
 from cookidoo_api import Cookidoo, CookidooConfig
 from cookidoo_api.helpers import get_localization_options
 from dotenv import load_dotenv
@@ -56,7 +56,10 @@ async def _get_client() -> Cookidoo:
         await get_localization_options(country=country, language=language)
     )[0]
 
-    _session = ClientSession()
+    # cookidoo-api 0.17.2+ uses a browser-style OAuth2/PKCE login that needs
+    # a cookie jar with unsafe=True so cross-domain cookies (cookidoo.thermomix.com
+    # + ciam.prod.cookidoo.vorwerk-digital.com) survive the redirect chain.
+    _session = ClientSession(cookie_jar=CookieJar(unsafe=True))
     cfg = CookidooConfig(email=email, password=password, localization=localization)
     _client = Cookidoo(session=_session, cfg=cfg)
     await _client.login()
